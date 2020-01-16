@@ -9,16 +9,48 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<header class="my-logo">
-    <div class="container">
-        <div class="jumbotron">
-        <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
-        <?php wp_nav_menu( array( 'header-menu' => 'header-menu' ) ); ?>
-        
-        </div>
+<header class="header">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-xl">
+  <a class="navbar-brand " href="#"><img class="logo" src="http://localhost/WordpressTheme/wp-content/themes/Mon theme/assets/img/css117.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+   
+
+    <div class="collapse navbar-collapse" id="navbarsExample07XL">
+    
+        <?php
+        wp_nav_menu( array(
+            'theme_location'    => 'primary',
+            'depth'             => 2,
+            'container'         => 'div',
+            'container_class'   => 'collapse navbar-collapse',
+            'container_id'      => 'navbarsExample07XL',
+            'menu_class'        => 'nav navbar-nav ml-auto navbar-right',
+            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'            => new WP_Bootstrap_Navwalker(),
+        ) );
+        ?>
+    
+      <!-- <form class="form-inline my-2 my-md-0" method="get">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form> -->
     </div>
+  </div>
+</nav>
+
+
+
 </header>
+
+		
+	</div> 	<!-- container -->
         
+
+
+  
 
         
     

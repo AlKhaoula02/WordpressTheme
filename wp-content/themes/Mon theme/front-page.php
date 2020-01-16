@@ -1,33 +1,82 @@
 <?php get_header(); ?>
-<div class="container">
-<section>
-        <div class="row ">
-                <img src ="<?php echo get_template_directory_uri();?>/assets/img/hello.png" class="img-responsive"></img>
-        </div>   
-</section>
-<section>
-  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-      <div class="row">
-          <div class="col-md-8 ">
-          <article class="article-loop">
-        <header>
-          <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-          By: <?php the_author(); ?>
-        </header>
-        <?php the_excerpt(); ?>
-      </article>
-    <?php endwhile; else : ?>
-    <article>
-        <p>Sorry, no posts were found!</p>
-    </article>
-      <?php endif; ?>
+<?php
+$args_blog = array(
+  'post_type' => 'post',
+  'posts_per_page' => 6
+);
+$req_blog = new WP_Query($args_blog);
+?>
+<?php if ($req_blog->have_posts()) : ?>
+  <div class="container-fluid">
+    <section>
+      <?php if (have_posts()) : ?>
+        <?php while (have_posts()) : the_post(); ?>
+
+          <div class="row ">
+            <div class="baseline col-md-12">
+              <?php the_content('<p class="text-center ">,</p>');  ?>
+              
+            </div>
+
           </div>
-          <?php get_sidebar(); ?>
+  </div>
+<div class="container  ">
+    <div class=" content-thin">
+
+    <?php endwhile; ?>
+    <?php else :  ?>
+    <div class="row">
+      <div class="col-md-12">
+        <p> Pas de résultats' </p>
+      </div>
     </div>
-</section>
-<?php get_footer(); ?>
+  <?php endif; ?>
+
+  </section>
+  <section id="blog-front">
+
+    <div class="row">
+      <?php while ($req_blog->have_posts()) : $req_blog->the_post();  ?>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                <h2> <?php the_title(); ?></h2>
+              </div>
+              <div class="card-text"><?php the_post_thumbnail(
+                                        'small',
+                                        array('class' => 'img-fluid aligncenter')
+                                      ); ?>
+                <?php the_excerpt();
+                the_author(); ?>
+                <p>
+                  <?php
+                  echo katheme_give_me_meta_01(
+                    esc_attr(get_the_date('c')),
+                    esc_html(get_the_date()),
+                    get_the_category_list(', '),
+                    get_the_tag_list('', ', ')
+                  );
+                  ?>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <?php endwhile;
+      wp_reset_postdata(); ?>
+    
+    </div><!-- row-->
+    
+
+
+    </section>
+  </div>
+  <?php endif; ?>
+
+
+  <?php get_sidebar() ?>
 </div>
 
-
-</body>
-</html>
+<?php get_footer();
