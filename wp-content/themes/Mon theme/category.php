@@ -26,7 +26,8 @@
             <div class="card">
           	<article class="article-loop">
         <header>
-          <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+		  <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+		  <br>
           par <?php the_author(); ?> <?php 
 								  echo katheme_give_me_meta_01(
 									  esc_attr(get_the_date('c') ),

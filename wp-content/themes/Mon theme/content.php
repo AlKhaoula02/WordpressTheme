@@ -6,6 +6,7 @@
 	</div>
 	<div class="col-xs-10">
 		<h1> <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> </h1>
+		<br>
 			<p>
 				<?php 
 					echo katheme_give_me_meta_01(
@@ -16,6 +17,7 @@
 					);
 				?>
 			</p>
+			<br>
 	    <?php the_excerpt(); ?>
 	</div>
 </div>

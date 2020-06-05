@@ -40,6 +40,14 @@ body{
     background-color:lightgray;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+p{
+  font-size:larger ;
+}
+
+.container-fluid{
+    padding-right: 0!important;
+    padding-left: 0!important;
+}
 
 .navbar{
 
@@ -67,6 +75,9 @@ li {
 .header
 {
   background-color: darkgrey;
+}
+.lasection{
+  background-color: #E75217!important;
 }
 body > header > h1 > a {
     color: #ffffff;
@@ -226,6 +237,7 @@ a:hover {
 {
   
   padding: 5%;
+  border-radius: 3%;
   background-color: #E75217;
   border: solid 1px #E75217;
   transition-property: color;
@@ -281,6 +293,13 @@ background: #694F87;
 border:solid 3px #694F87;
 
 }
+
+
+
+
+
+
+
 @media screen and (max-width: 992px) {
   .content-area,
   .primary-sidebar {
